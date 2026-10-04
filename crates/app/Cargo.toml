@@ -1,0 +1,13 @@
+[package]
+name = "bioviewer"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
+description = "Desktop viewer for multi-channel microscopy series"
+
+[dependencies]
+bioviewer-core = { path = "../core" }
+gpui-kit = "0.7"
+image = { version = "0.25", default-features = false }
+rfd = "0.15"

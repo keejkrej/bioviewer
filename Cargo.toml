@@ -1,0 +1,13 @@
+[workspace]
+members = ["crates/core", "crates/app"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+publish = false
+license = "MIT"
+
+[profile.release]
+codegen-units = 16
+lto = false
