@@ -20,9 +20,11 @@ install -m 0755 "$binary" "$stage/usr/bin/bioviewer"
 install -m 0644 "$(dirname "$0")/bioviewer.desktop" "$stage/usr/share/applications/bioviewer.desktop"
 
 # wgpu loads libvulkan.so.1 at runtime, so ldd does not list it.
+# ldd prints /lib/... on a merged /usr system; package files live under /usr/lib.
 ldd "$binary" | awk '/=> \// { print $3 }' | while read -r lib; do
-  if ! owner="$(dpkg -S "$lib" 2>/dev/null | cut -d: -f1)"; then
-    echo "no Debian package owns $lib" >&2
+  resolved="$(readlink -f "$lib")"
+  if ! owner="$(dpkg -S "$resolved" 2>/dev/null | cut -d: -f1)"; then
+    echo "no Debian package owns $lib ($resolved)" >&2
     exit 1
   fi
   printf '%s\n' "$owner"
