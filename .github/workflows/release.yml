@@ -38,7 +38,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             build-essential pkg-config cmake \
-            libfontconfig1-dev libwayland-dev libxkbcommon-dev \
+            libfontconfig1-dev libfreetype6-dev libwayland-dev \
+            libxkbcommon-dev libxkbcommon-x11-dev \
             libx11-dev libx11-xcb-dev libxcb1-dev libvulkan-dev
       - name: Version
         id: version
