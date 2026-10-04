@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=BioViewer
+Comment=View Micro-Manager microscopy series
+Exec=bioviewer
+Terminal=false
+Categories=Science;Graphics;
